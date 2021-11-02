@@ -1,67 +1,77 @@
+* {
+  margin:0;   /* 마진 리셋 */
+  padding:0;   /* 패딩 리셋 */
+  box-sizing: border-box;   /* 박스 영역은 테두리까지 */ 
+}
+
+a {
+  text-decoration:none;  /* 텍스트 링크 밑줄 없애기 */ 
+}
+ul {
+  list-style: none;
+}
+
+head{
+  font-size: x-large;
+}
+
+
+
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'nanumsquare';
   }
-  .breadcrumb-item {
-    font-size: 0.8em !important;
+  nav{  
+    float:right;   /* 오른쪽으로 플로팅 */
+    width:900px;   /*   너비 */  
+    height:100px;   /* 메뉴 영역 높이 */  
+    padding-top:40px;  /* 메뉴를 아래로 내리기 위해 */  
   }
-  .ellipsis{
-    display: block;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+/******************/
+/*   푸터 영역    */
+/******************/
+
+
+  footer{   
+    width:100%;   /* 너비 */
+    height:100px;  /* 높이 */
+    border-top:2px solid #222;
   }
-  
-  .board-table {
-    table-layout: fixed;
+
+  #bottomMenu{
+    width:100%;
+    height:20px;
+    position:relative;  
   }
-  .board-table .numId,
-  .board-table .views{
-    width: 60px;
-    text-align: center;
+  #bottomMenu ul {
+    margin-top:15px;  
   }
-  .board-table .author,
-  .board-table .date {
-    width: 100px;
-    text-align: center;
+  #bottomMenu ul li{
+    float:left;  /* 가로로 배치 */ 
+    padding:5px 20px;
+    border-right:1px solid #ddd;   /* 항목 오른쪽에 테두리 */ 
   }
-  .board-table .title-container:hover .title-comments,
-  .board-table .title-container:hover .title-text,
-  .board-table .title-container:hover .title-attachment
-  {
-    text-decoration: underline;
+  #bottomMenu ul li:last-child{
+    border:none;  /* 마지막 항목에는 오른쪽 테두리 없음 */  
   }
-  
-  .post-body,
-  .comment-text {
-    white-space: pre-line;
+  #bottomMenu ul li a, #bottomMenu ul li a:visited {  
+    font-size:15px;  /* 글자 크기 */ 
+    color:#666;   /* 글자 색 */ 
   }
-  .post-info{
-    font-size: 0.8em;
+  #sns {
+    position:absolute;  
+    right:0;  /* 오른쪽 끝에 배치 */ 
   }
-  
-  .user-form {
-    width: 400px;
+  #sns ul li{
+    border:none;  /* 테두리 없이 */
+    padding:5px;   
+  } 
+  #company{
+    clear:left;  /* 플로팅 해제. clear:both도 가능 */
+    margin-top:25px;  /* 위쪽 마진 */
+    margin-left:20px;  /* 왼쪽 마진 */ 
   }
-  
-  .post-index-tool {
-    max-width: 450px;
-  }
-  .post-index-tool input[type='text']{
-    max-width: 130px;
-  }
-  
-  .highlighted {
-    background-color: yellow;
-  }
-  
-  .comment-edit,
-  .comment-reply,
-  .comment-edit-enabled .comment-show {
-    display:none;
-  }
-  
-  .comment-edit-enabled .comment-edit,
-  .comment-reply-enabled .comment-reply {
-    display:inherit;
+  p {
+    font-size:14px;  /* 글자 크기 */
+    color:#aaa;    /* 글자 색*/ 
   }

@@ -1,5 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+
+const MongoClient = require('mongodb').MongoClient;
+app.set('view engine', 'ejs');
+
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + 'index.html')
@@ -12,3 +18,5 @@ app.get('/', (req, res) => {
 app.listen(3000, function() {
         console.log('listening on 3000')
 })
+
+app.use('/public', express.static('public'));

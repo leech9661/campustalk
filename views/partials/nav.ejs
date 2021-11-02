@@ -1,24 +1,30 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
-    <div class="container">
-      <div class="navbar-brand">Campus talk</div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="/posts" class="nav-link">Board</a></li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <% if(isAuthenticated){ %>
-            <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">My Account</a></li>
-            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
-          <% } else { %>
-            <li class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-          <% } %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+
+
+<header class="mb-auto">
+<div class="container">
+<h3 class="float-md-start mb-0">Campus Talk</h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <link rel="stylesheet" href="/public/css/nav.css">
+        
+    
+   
+       
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/posts">Board</a>
+              <a class="nav-link" href="/chats">Chat</a>
+         
+          
+              <% if(isAuthenticated){ %>
+                <a class="nav-link" href="/users/<%= currentUser.username %>">My Account</a>
+                <a class="nav-link" href="/logout">Logout</a>
+              <% } else { %>
+                <a class="nav-link" href="/users/new">Sign Up</a>
+                <a class="nav-link" href="/login">Login</a>
+              <% } %>
+            
+            </nav>
+        </div>
+      
+    </header>
