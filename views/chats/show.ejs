@@ -1,0 +1,86 @@
+  
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-1 pl-2 pr-2">
+          <li class="breadcrumb-item"><a href="/">홈으로</a></li>
+          <li class="breadcrumb-item"><a href="/chats">게시판</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= chat.numId %>. <%= chat.title %></li>
+        </ol>
+      </nav>
+
+      <div class="card">
+        <h5 class="card-header p-2" data-search-highlight="title"><%= chat.numId %>. <%= chat.title %></h5>
+        <div class="row">
+
+          <div class="col-md-7 col-lg-8 col-xl-9 order-sm-2 order-md-1">
+            <% if(chat.attachment) { %>
+              <div class="ml-2">
+                <small>📁 Attachment: <a href="/files/<%= chat.attachment.serverFileName %>/<%= chat.attachment.originalFileName %>"><%= chat.attachment.originalFileName %></a> (<%= util.bytesToSize(chat.attachment.size) %>)</small>
+              </div>
+            <% } %>
+            <div class="chat-body p-2" data-search-highlight="body"><%= chat.body %></div>
+          </div>
+
+          <div class="col-md-5 col-lg-4 col-xl-3 order-sm-1 order-md-2">
+            <div class="chat-info card m-2 p-2">
+              <div class="border-bottom pb-1 mb-1">
+                <div><span>Author</span> : <span data-search-highlight="author"><%= chat.author ? chat.author.username : "" %></span></div>
+                <div><span>Views</span> : <span><%= chat.views %></span></div>
+              </div>
+              <div><span>Created</span> : <span data-date-time="<%= chat.createdAt %>"></span></div>
+              <% if(chat.updatedAt) { %>
+                <div><span>Updated</span> : <span data-date-time="<%= chat.updatedAt %>"></span></div>
+              <% } %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <a class="btn btn-primary" href="/chats<%= getPostQueryString() %>">Back</a>
+        <% if(isAuthenticated && chat.author && currentUser.id == chat.author.id){ %>
+          <a class="btn btn-primary" href="/chats/<%= chat._id %>/edit<%= getPostQueryString() %>">Edit</a>
+          <form action="/chats/<%= chat._id %>?_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
+            <a class="btn btn-primary" href="javascript:void(0)" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a>
+          </form>
+        <% } %>
+      </div>
+
+      <h4 class="mt-3">Comments</h4>
+
+      <% if(commentTrees.length){ %>
+        <div class="mt-3 border-bottom">
+          <% commentTrees.forEach(function(comment) { %>
+            <%- include('./partials/comment-show', {
+              chat: chat,
+              comment: comment,
+              commentForm: commentForm,
+              commentError: commentError,
+            }); %>
+          <% }) %>
+        </div>
+      <% } %>
+
+      <div class="mt-3">
+        <%- include('./partials/comment-form', {
+          actionUrl:'/comments?postId=' + chat._id,
+          comment: {},
+          commentForm: commentForm,
+          commentError: commentError,
+          parentComment: null,
+        }); %>
+      </div>
+
+    </div>
+  </body>
+</html>

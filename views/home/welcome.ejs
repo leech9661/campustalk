@@ -1,18 +1,74 @@
-<!DOCTYPE html>
-<html>
+
+
+<!doctype html>
+<html class="h-100">
   <head>
-    <%- include('../partials/head') %>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>비대면 학습 플랫폼, Campus Talk!</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../../public/css/dist/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/public/css/cover.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="d-flex h-100 text-center text-dark bg-white">
+    
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+
     <%- include('../partials/nav') %>
+  </header>
 
-    <div class="container mb-3">
+  <main class="px-3">
+    <h1>저희 Campus Talk은</h1>
+    <p class="lead">코로나19 상황 속에서 비대면 수업의 한계를 극복하고 더 나아가 대면 수업이 가능해진 포스트 코로나 시대에 걸맞는 시스템을 도입하여 수업의 효율성을 제고시키고자 도입하였습니다.</p>
+    <p class="lead">
+      <a href="/about" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+    </p>
+  </main>
 
-      <div class="jumbotron">
-        <h1>Campus talk</h1>
-        <P>Campus talk에 오신걸 환영합니다!</p>
-      </div>
-
+  <footer class="mt-auto text-white-50">
+    <div id="foo_div">
+      <ul>
+        <li><a href="#">회사 소개</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">사이트맵</a></li>
+      </ul>
     </div>
+    <p><a href="https://getbootstrap.com/" class="text-white">Campus Talk</a>, by <a href="https://software.chungbuk.ac.kr" class="text-white">(주)산학동호회</a>.</p>
+  </footer>
+</div>
+
+
+    
   </body>
 </html>
