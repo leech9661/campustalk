@@ -18,12 +18,12 @@ var userSchema = mongoose.Schema({
   name:{
     type:String,
     required:[true,'이름이 필요합니다'],
-    match:[/^.{4,12}$/,'5글자 이하이어야 합니다!'],
+    match:[/^.{2,12}$/,'이름을 입력하세요!'],
     trim:true
   },
   email:{
     type:String,
-    match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
+    match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'이메일 주소가 올바르지 않습니다!'],
     trim:true
   }
 },{
@@ -56,7 +56,7 @@ userSchema.path('password').validate(function(v) {
   // create user
   if(user.isNew){
     if(!user.passwordConfirmation){
-      user.invalidate('passwordConfirmation', 'Password Confirmation is required.');
+      user.invalidate('passwordConfirmation', '비밀번호 확인이 필요합니다.');
     }
 
     if(!passwordRegex.test(user.password)){
@@ -70,17 +70,17 @@ userSchema.path('password').validate(function(v) {
   // update user
   if(!user.isNew){
     if(!user.currentPassword){
-      user.invalidate('currentPassword', 'Current Password is required!');
+      user.invalidate('currentPassword', '현재 비밀번호가 필요합니다');
     }
     else if(!bcrypt.compareSync(user.currentPassword, user.originalPassword)){
-      user.invalidate('currentPassword', 'Current Password is invalid!');
+      user.invalidate('currentPassword', '현재 비밀번호가 필요합니다');
     }
 
     if(user.newPassword && !passwordRegex.test(user.newPassword)){
       user.invalidate("newPassword", passwordRegexErrorMessage);
     }
     else if(user.newPassword !== user.passwordConfirmation) {
-      user.invalidate('passwordConfirmation', 'Password Confirmation does not matched!');
+      user.invalidate('passwordConfirmation', '비밀번호 확인이 일치하지 않습니다');
     }
   }
 });

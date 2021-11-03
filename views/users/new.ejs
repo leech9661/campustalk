@@ -2,13 +2,41 @@
 <html>
   <head>
     <%- include('../partials/head') %>
+    <%- include('../partials/nav') %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+        <!-- Bootstrap core CSS -->
+<link href="../../public/css/dist/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+ <!-- Custom styles for this template -->
+ <link href="../../public/css/form-validation.css" rel="stylesheet">
+
+
   </head>
   <body>
-    <%- include('../partials/nav') %>
+    
 
     <div class="container mb-3">
 
-      <h3 class="contentBoxTop mb-3">회원가입</h3>
+      <h3 class="contentBoxTop mb-3">->회원가입</h3>
 
       <form action="/users" method="post">
 

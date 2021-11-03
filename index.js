@@ -6,6 +6,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('./config/passport');
 var util = require('./util');
+const { ObjectId } = require('mongodb');
 var app = express();
 
 // DB setting
@@ -56,3 +57,26 @@ var port = 3000;
 app.listen(port, function(){
   console.log('server on! http://localhost:'+port);
 });
+// Chatting
+
+app.post('/chatroom', function(요청, 응답){
+
+	var 저장할거 = {
+	  title : '무슨무슨채팅방',
+	  member : [ObjectId(요청.body.당한사람id), 요청.user._id],
+	  date : new Date()
+	}
+  
+	db.collection('chatroom').insertOne(저장할거).then(function(결과){
+	  응답.send('저장완료')
+	});
+  });
+
+  app.get('/chat', 로그인했니, function(요청, 응답){ 
+
+	db.collection('chatroom').find({ member : 요청.user._id }).toArray().then((결과)=>{
+	  console.log(결과);
+	  응답.render('chat.ejs', {data : 결과})
+	})
+  
+  }); 
